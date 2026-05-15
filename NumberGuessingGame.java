@@ -1,0 +1,30 @@
+import java.util.*;
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        Random rand = new Random();
+        int secretNumber = rand.nextInt(100) + 1;
+        boolean win = false;
+        int attempts = 0;
+        System.out.println("=== Number Guessing Game ===");
+        while (!win) {
+            System.out.print("Enter your guess: ");
+            if (sc.hasNextInt()) {
+                int guess = sc.nextInt();
+                attempts++;
+                if (guess == secretNumber) {
+                    System.out.println("Correct! You got it in " + attempts + " attempts!");
+                    win = true;
+                } else if (guess > secretNumber) {
+                    System.out.println("Too High! Try lower.");
+                } else {
+                    System.out.println("Too Low! Try higher.");
+                }
+            } else {
+                System.out.println("Invalid input! Please enter a number.");
+                sc.next();
+            }
+        }
+        sc.close();
+    }
+}
